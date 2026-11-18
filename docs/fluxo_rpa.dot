@@ -1,0 +1,30 @@
+digraph RPA {
+ graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.36", ranksep="0.45", label="DrenaHub | Fluxo do processo de RPA (visão simplificada)", labelloc=t, fontsize=17, fontname="DejaVu Sans"];
+ node [fontname="DejaVu Sans", fontsize=10, shape=box, style="rounded,filled", fillcolor="#eef2f7", color="#4b5563", margin="0.15,0.11"];
+ edge [fontname="DejaVu Sans", fontsize=9, color="#4b5563"];
+ start [label="Início", shape=ellipse, fillcolor="#dcfce7"];
+ load [label="Ler lote JSON de pontos"];
+ valid [label="Arquivo existe e JSON é válido?", shape=diamond, fillcolor="#fef3c7"];
+ fatal [label="Registrar falha fatal e encerrar", fillcolor="#fee2e2"];
+ iterate [label="Selecionar próximo ponto"];
+ more [label="Há outro ponto?", shape=diamond, fillcolor="#fef3c7"];
+ verify [label="Validar campos e duplicidades", shape=diamond, fillcolor="#fef3c7"];
+ reject [label="Registrar erro do item e continuar", fillcolor="#fee2e2"];
+ risk [label="Calcular prioridade com regras de chuva,\nobstrução e água acumulada"];
+ keep [label="Salvar prioridade e fatores"];
+ store [label="Consolidar contagens e gravar JSON"];
+ expose [label="API GET /priorities disponibiliza saída\npara componente do MVP"];
+ finish [label="Fim", shape=ellipse, fillcolor="#dcfce7"];
+ start -> load -> valid;
+ valid -> fatal [label="Não"];
+ valid -> more [label="Sim"];
+ more -> iterate [label="Sim"];
+ iterate -> verify;
+ verify -> reject [label="Inválido"];
+ verify -> risk [label="Válido"];
+ risk -> keep -> more;
+ reject -> more;
+ more -> store [label="Não"];
+ store -> expose -> finish;
+ fatal -> finish;
+}

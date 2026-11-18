@@ -1,0 +1,5 @@
+[
+  {"point_id":"COND-A-RALO-01", "precip_mm_24h":64.0, "obstruction":true, "accumulated_water":true},
+  {"point_id":"GALPAO-B-02", "precip_mm_24h":26.0, "obstruction":false, "accumulated_water":false},
+  {"point_id":"ESTAC-C-03", "precip_mm_24h":5.0, "obstruction":false, "accumulated_water":false}
+]

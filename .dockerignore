@@ -1,0 +1,16 @@
+**/__pycache__/
+**/*.pyc
+.pytest_cache/
+.git/
+.venv/
+venv/
+logs/
+docs/
+tests/
+*.log
+.env
+.env.*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json

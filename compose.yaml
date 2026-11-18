@@ -1,0 +1,10 @@
+services:
+  drenahub-api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      OUTPUT_FILE: /app/data/priorities.json
+    volumes:
+      - ./data:/app/data:ro
+    restart: unless-stopped
