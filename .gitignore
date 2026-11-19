@@ -24,3 +24,7 @@ logs/
 
 # Arquivos temporários
 *.tmp
+
+*.tfvars.json
+crash.log
+crash.*.log
